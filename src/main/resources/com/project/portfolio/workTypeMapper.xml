@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.portfolio.dao.CompanyWorkTypeDAO">
+  
+  <select id="approverSearch" resultType="login">
+  	select * from employee where emp_name = #{emp_name}		
+  </select>
+  
+  <insert id="approverRequest">
+  	insert into work_type
+	  	(emp_id, emp_department, emp_rank,
+	  	 emp_name, work_date_start, work_date_end,
+	  	 work_type,work_content, approver_emp_id)
+  	values
+  	  	(#{emp_id},#{emp_department},#{emp_rank},
+  	  	#{emp_name},#{work_date_start}, #{work_date_end},
+  	  	#{work_type},#{work_content},#{approver_emp_id})
+  </insert>
+  
+  <select id="workTypeStatus" resultType="workType">
+  	select * 
+  		from work_type
+  		where emp_department = #{emp_department}
+  		order by work_date_start desc
+  		limit #{displayPost}, #{postNum}
+  </select>
+  
+  <select id="count" resultType="int">
+  	select count(*) from work_type
+  	where emp_department = #{emp_department}
+  </select>
+  
+  <select id="work_typeList" resultType="workType">
+  	SELECT *
+  		FROM work_type 
+		WHERE (DATE(CURDATE()) BETWEEN work_date_start AND work_date_end)
+		AND final_approver = #{final_approver}
+  </select>
+  
+  <!-- 출근 -->
+  <select id="goToWork" resultType="int">
+  SELECT COUNT(*) FROM time_table
+		WHERE work_date = CURDATE()
+			AND start_time IS NOT null
+			AND end_time is null
+  </select>
+  
+  <!-- 야근 -->
+  <select id="nightShift" resultType="int">
+  SELECT COUNT(*) FROM time_table
+		WHERE work_date = CURDATE() 
+			AND night_start_time IS NOT null
+			AND night_end_time is NULL
+  </select>
+  
+  <!-- 퇴근 -->
+  <select id="leaveWork" resultType="int">
+  SELECT sum(cnt) FROM(
+	SELECT COUNT(*) AS cnt FROM time_table
+		WHERE work_date = CURDATE() 
+			AND total_time IS NOT null
+			AND night_start_time is null
+			UNION ALL
+			SELECT COUNT(*) AS cnt FROM time_table
+				WHERE work_date = CURDATE()
+					AND night_total_time IS NOT NULL) 
+					time_table
+  </select>
+  
+</mapper>

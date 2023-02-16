@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.portfolio.dao.CompanyAdminDAO">
+
+	<select id="adminEmployeeSelect" parameterType="hashMap" resultType="login">
+		SELECT * FROM employee
+			WHERE not emp_number = #{emp_number}
+			ORDER BY emp_department ASC, emp_rank_number
+			 limit #{displayPost}, #{postNum}
+	</select>
+	
+	<select id="adminEmployeeTeam" resultType="login">
+		select * from employee
+			WHERE emp_department = #{emp_department}
+			ORDER BY  emp_rank_number
+	</select>
+	
+	
+	<select id="count" resultType="int">
+	 	select count(*) from employee
+	</select>
+	
+	<delete id="adminEmployeeDelete">
+		delete from employee
+		where emp_id = #{emp_id}
+	</delete>
+	
+	<select id="adminEmployeeMonth" parameterType="hashMap" resultType="timeCheck">
+		SELECT * FROM time_table
+			WHERE emp_id = #{emp_id} AND work_date LIKE #{select}
+			ORDER BY work_date
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<select id="countMonth" resultType="int">
+		 select count(*) from time_table
+		 	where emp_id = #{emp_id} and work_Date Like #{select}
+	</select>
+	
+	<select id="adminTimeUpdate" resultType="timeCheck">
+		SELECT * 
+			FROM time_table
+			WHERE emp_id = #{emp_id}
+			AND work_date = #{work_date};
+	</select>
+	
+	<update id="adminTimeUpdateResult">
+		UPDATE time_table
+			SET end_time = #{end_time}
+			WHERE emp_id = #{emp_id} AND work_date = #{work_date}
+	</update>
+	
+	<update id="adminTotal_TimeUpdate">
+  		UPDATE time_table
+		SET total_time = 
+								(select TIMEDIFF(end_time, start_time)
+								FROM time_table
+								WHERE emp_id = #{emp_id}
+								AND work_date = #{work_date})
+		WHERE emp_id = #{emp_id}
+		AND work_date = #{work_date}
+  	</update>
+	
+</mapper>

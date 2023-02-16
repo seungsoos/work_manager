@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.portfolio.dao.CompanyWorkDiaryDAO">
+	
+	<!-- 팀별 전시 -->
+	<select id="listPage" parameterType="hashMap" resultType="workDiary">
+		select
+			*
+		from
+			 work_diary
+		WHERE emp_department = #{emp_department}
+		order by
+			 articleNo desc
+		limit
+			 #{displayPost}, #{postNum}
+	</select>
+	
+	<select id="boardTotal" resultType="int">
+		select COUNT(*) from work_diary
+		where emp_department = #{emp_department}
+	</select>
+	
+	<!-- 관리자모드 접속 -->
+	<select id="listPageAdmin" parameterType="hashMap" resultType="workDiary">
+		select
+			*
+		from
+			 work_diary
+		order by
+			 articleNo desc
+		limit
+			 #{displayPost}, #{postNum}
+	</select>
+	
+	<select id="boardTotalAdmin" resultType="int">
+		select COUNT(*) from work_diary
+	</select>
+	
+	<select id="articleNoMax" resultType="int">
+		SELECT MAX(ARTICLENO)+1 NEWARTICLENO
+			FROM work_diary
+	</select>
+	
+	<insert id="insertBoard">
+		INSERT INTO work_diary 
+			(emp_id, emp_rank, emp_name,
+			 emp_department, articleNo, parentNo,
+			 diary_title, diary_content)
+		VALUES
+			(#{emp_id}, 
+				(SELECT emp_rank  
+				 FROM employee
+				 WHERE emp_id = #{emp_id}), 
+					(SELECT emp_name 
+					 FROM employee
+					 WHERE emp_id = #{emp_id}),
+						(SELECT emp_department 
+						FROM employee
+						WHERE emp_id = #{emp_id}),
+						 	#{articleNo}, #{parentNo},
+						 	#{diary_title},#{diary_content})
+	</insert>
+	
+	<select id="selectBoardByArticleNo" resultType="workDiary">
+		SELECT * 
+			FROM work_diary
+			WHERE articleNo = #{articleNo}
+	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM work_diary
+			WHERE articleNo = #{articleNo}
+	</delete>
+	
+	<update id="updateBoard">
+		UPDATE work_diary
+			SET 
+				diary_title= #{diary_title},
+				diary_content = #{diary_content}
+			WHERE
+				articleNo = #{articleNo}
+	</update>
+	
+	<insert id="insertReply">
+		INSERT INTO work_diary 
+			(emp_id, emp_rank, emp_name,
+			 articleNo, parentNo,
+			 diary_title, diary_content)
+		VALUES
+			(#{emp_id}, 
+				(SELECT emp_rank  
+				 FROM employee
+				 WHERE emp_id = #{emp_id}), 
+					(SELECT emp_name 
+					 FROM employee
+					 WHERE emp_id = #{emp_id}),
+					 	#{articleNo}, #{parentNo},
+					 	#{diary_title},#{diary_content})
+	</insert>
+	
+	
+	
+</mapper>

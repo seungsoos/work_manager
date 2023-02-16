@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.portfolio.dao.CompanyMainDAO">
+  
+  	<select id="newBno" resultType="int">
+		SELECT MAX(bno)+1 newbno
+			FROM time_table
+  	</select>
+  	
+  	<update id="updateInformation">
+  	UPDATE employee
+		SET emp_rank = #{emp_rank}, emp_department = #{emp_department}
+		WHERE emp_id = #{emp_id}
+  	</update>
+  	
+  	<select id="totalEmployee" resultType="int">
+		SELECT COUNT(*)
+		FROM employee
+  	</select>
+  
+  	<insert id="startTime">
+	  	INSERT INTO time_table
+		(emp_id, emp_name, bno, work_date, DAY_OF_WEEK, start_time)
+		VALUES
+		(#{emp_id}, #{emp_name}, #{newBno}, CURDATE(),
+		(SELECT (case DAYOFWEEK(now())
+		    when '1' then '일요일'
+		    when '2' then '월요일'
+		    when '3' then '화요일'
+		    when '4' then '수요일'
+		    when '5' then '목요일'
+		    when '6' then '금요일'
+		    when '7' then '토요일'
+		    end)
+		from
+		    DUAL), NOW())
+  	</insert>
+  	
+  	<update id="endTime">
+	  	UPDATE time_table
+		SET end_time = NOW()
+		WHERE emp_id = #{emp_id} 
+		AND emp_name = #{emp_name}
+		AND work_date = CURDATE()
+  	</update>
+  	
+  	<update id="total_time">
+  		UPDATE time_table
+		SET total_time = 
+								(select TIMEDIFF(end_time, start_time)
+								FROM time_table
+								WHERE emp_id = #{emp_id}
+								AND emp_name = #{emp_name}
+								AND work_date = CURDATE())
+		WHERE emp_id = #{emp_id}
+		AND emp_name = #{emp_name}
+		AND work_date = CURDATE()
+  	</update>
+  	
+  	<update id="night_start_time">
+	  	UPDATE time_table
+		SET night_start_time = NOW()
+		WHERE emp_id = #{emp_id} 
+		AND emp_name = #{emp_name}
+		AND work_date = CURDATE()
+  	</update>
+  	
+  	<update id="night_end_time">
+	  	UPDATE time_table
+		SET night_end_time = NOW()
+		WHERE emp_id = #{emp_id} 
+		AND emp_name = #{emp_name}
+		AND work_date = CURDATE()
+  	</update>
+  	
+  	<update id="night_total_time">
+  		UPDATE time_table
+		SET night_total_time = 
+								(select TIMEDIFF(night_end_time, night_start_time)
+								FROM time_table
+								WHERE emp_id = #{emp_id}
+								AND emp_name = #{emp_name}
+								AND work_date = CURDATE())
+		WHERE emp_id = #{emp_id}
+		AND emp_name = #{emp_name}
+		AND work_date = CURDATE()
+  	</update>
+  	
+  	<select id="workCheck" resultType="int">
+  		SELECT
+  			COUNT(*) 
+		FROM
+			time_table
+		WHERE
+			emp_id = #{emp_id} 
+		AND
+			work_date = CURDATE();
+  	</select>
+  	
+  	<select id="day_of_week" resultType="timeCheck">
+  		SELECT a.total_time,a.night_total_time, a.DAY_OF_WEEK, a.work_date
+				FROM time_table AS a INNER JOIN(SELECT
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 0 ) AS MONDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 1 ) AS TUESDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 2 ) AS WEDNESDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 3 ) AS THURSDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) AS FRIDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 5 ) AS SATURDAY,
+													ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 6 ) AS SUNDAY
+												FROM
+													DUAL) AS b
+					ON a.work_date = b.monday 
+					or a.work_date = b.TUESDAY 
+					or a.work_date = b.WEDNESDAY 
+					or a.work_date = b.THURSDAY 
+					or a.work_date = b.FRIDAY
+				where a.emp_id = #{emp_id}
+				ORDER BY a.work_date	
+  	</select>
+  	
+  	<select id="total_day_of_week" resultType="String">
+  	SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(a.total_time)))
+			FROM (SELECT a.total_time,a.DAY_OF_WEEK, a.work_date
+							FROM time_table AS a INNER JOIN(SELECT
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 0 ) AS MONDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 1 ) AS TUESDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 2 ) AS WEDNESDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 3 ) AS THURSDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) AS FRIDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 5 ) AS SATURDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 6 ) AS SUNDAY
+											FROM
+												DUAL) AS b
+				ON a.work_date = b.MONDAY
+				OR a.work_date = b.TUESDAY
+				OR a.work_date = b.WEDNESDAY
+				OR a.work_date = b.THURSDAY
+				OR a.work_date = b.FRIDAY
+			where a.emp_id = #{emp_id}) a
+  	</select>
+  	
+  	<select id="total_night_of_week" resultType="String">
+  	SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(a.night_total_time)))
+			FROM (SELECT a.night_total_time,a.DAY_OF_WEEK, a.work_date
+							FROM time_table AS a INNER JOIN(SELECT
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 0 ) AS MONDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 1 ) AS TUESDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 2 ) AS WEDNESDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 3 ) AS THURSDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) AS FRIDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 5 ) AS SATURDAY,
+												ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 6 ) AS SUNDAY
+											FROM
+												DUAL) AS b
+				ON a.work_date = b.MONDAY
+				OR a.work_date = b.TUESDAY
+				OR a.work_date = b.WEDNESDAY
+				OR a.work_date = b.THURSDAY
+				OR a.work_date = b.FRIDAY
+			where a.emp_id = #{emp_id}) a;
+  	</select>
+  	
+  	<!-- 개인정보 수정 후 세션값 변경 -->
+  	<select id="updateSession" resultType="login">
+  		select * from employee
+  			where emp_id = #{emp_id}
+  	</select>
+  </mapper>

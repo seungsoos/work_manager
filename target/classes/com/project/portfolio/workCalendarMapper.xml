@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.portfolio.dao.CompanyWorkCalendarDAO">
+
+	 <resultMap id="calendarRM" type="workCalendar">
+	    <id property="calendarNo" column="CALENDAR_NO" />
+	    <result property="calendar_emp_id" column="CALENDAR_emp_id" />
+	    <result property="calendar_emp_rank" column="CALENDAR_emp_rank" />
+	    <result property="calendar_emp_name" column="CALENDAR_emp_name" />
+	    <result property="calendar_emp_department" column="CALENDAR_department" />
+	    <result property="calendarTitle" column="CALENDAR_TITLE" />
+	    <result property="calendarMemo" column="CALENDAR_MEMO" />
+	    <result property="calendarStart" column="CALENDAR_START" />
+	    <result property="calendarEnd" column="CALENDAR_END" />
+	  </resultMap>
+	
+	<select id="getCalendar" resultMap="calendarRM">
+		select * from calendar
+		where calendar_emp_department = #{calendar_emp_department}
+	</select>
+	
+	<select id="getAdminCalendar" resultMap="calendarRM">
+		select * from calendar
+	</select>
+	
+	<insert id="workTypeCalendarInsert">
+		<selectKey keyProperty="CALENDAR_NO" resultType="int" order="BEFORE">
+  			select nextval(CALENDAR_NO_SEQ)
+  		</selectKey>
+  			INSERT INTO calendar
+			 VALUES
+			(#{CALENDAR_NO},
+						(SELECT work_type 
+							FROM work_type
+							WHERE emp_id = #{emp_id}
+							AND bno = #{bno}),
+								 NULL,
+								  (SELECT work_date_start 
+										FROM work_type
+										WHERE emp_id = #{emp_id}
+										AND bno = #{bno}),
+											 (SELECT work_date_end
+													FROM work_type
+													WHERE emp_id = #{emp_id}
+													AND bno = #{bno}),
+															#{emp_id},
+																	(SELECT emp_rank
+																	FROM work_type
+																	WHERE emp_id = #{emp_id}
+																	AND bno = #{bno}),
+																			(SELECT emp_name
+																			FROM work_type
+																			WHERE emp_id = #{emp_id}
+																			AND bno = #{bno}),
+																				(SELECT emp_department
+																					FROM work_type
+																					WHERE emp_id = #{emp_id}
+																					AND bno = #{bno}))
+ 			
+  		
+  		
+	</insert>
+	
+</mapper>
