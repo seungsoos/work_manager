@@ -62,18 +62,18 @@
   	
   	<update id="night_start_time">
 	  	UPDATE time_table
-		SET night_start_time = NOW()
-		WHERE emp_id = #{emp_id} 
-		AND emp_name = #{emp_name}
-		AND work_date = CURDATE()
+			SET night_start_time = NOW()
+			WHERE emp_id = #{emp_id} 
+			AND emp_name = #{emp_name}
+			AND work_date = CURDATE()
   	</update>
   	
   	<update id="night_end_time">
 	  	UPDATE time_table
-		SET night_end_time = NOW()
-		WHERE emp_id = #{emp_id} 
-		AND emp_name = #{emp_name}
-		AND work_date = CURDATE()
+			SET night_end_time = NOW()
+			WHERE emp_id = #{emp_id} 
+			AND emp_name = #{emp_name}
+			AND work_date = CURDATE()
   	</update>
   	
   	<update id="night_total_time">

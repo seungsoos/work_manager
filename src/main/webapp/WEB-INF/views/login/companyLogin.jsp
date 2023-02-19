@@ -85,88 +85,14 @@
 					<li><a href="${cPath }/loginctr/agree.do" class="color-black li-a">회원가입</a></li>
 				</ul>
 			</div>
-				<br>
-				<input type="button" class="w-100 btn btn-lg btn-primary mt-2 loginBtn" value="로그인">
-			<div class="py-3 icon-line divclass d-inline-block div-class">
-	              <ul class="ul-class d-flex justify-content-center">
-	                <li><a id="naverIdLogin_loginButton" href="javascript:void(0)"><img src="${cPath}/resources/images/naver.png" class="icon-size" alt=""></a></li>
-	                <li><a href="javascript:kakaoLogin()"><img src="${cPath}/resources/images/kakao.png" class="icon-size" alt=""></a></li>
-	                <li><a class="btn btn-outline-light"><img src="${cPath}/resources/images/google.png" class="icon-size" alt=""></a></li>
-	              </ul>
-	        </div>
+			<br>
+			<input type="button" class="w-100 btn btn-lg btn-primary mt-2 loginBtn" value="로그인">
         </form>
 	</div>
-	<!-- 카카오톡 로그인 API -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.js"></script>
-	<!-- 네이버 로그인 API -->
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-
-<script>
-	<!-- 카카오톡 로그인 API -->
-    window.Kakao.init("cd53f7d56d621047da8d273a3011f4b1");
-    
-     function kakaoLogin(){
-        window.Kakao.Auth.login({
-
-            scope : 'profile_nickname, account_email, gender, age_range, birthday',
-            success : function(authObj){
-            	
-                window.Kakao.API.request({
-                    url : '/v2/user/me',
-                    success : res => {
-                        const Kakao_account = res.Kakao_account;
-                    }
-            });
-            }
-        });
-     }
-     
- 	<!-- 네이버 로그인 API -->
- 	var naverLogin = new naver.LoginWithNaverId(
- 			{
- 				clientId: "YislmfV3orQ2ba8nQ9R3", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
- 				callbackUrl: "http://localhost:8989/MyPortfolio/company/companyLogin.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
- 				isPopup: false,
- 				callbackHandle: true
- 			}
- 		);	
- 	naverLogin.init();
- 	window.addEventListener('load', function () {
- 		naverLogin.getLoginStatus(function (status) {
- 			if (status) {
- 				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
- 	    		
- 				console.log(naverLogin.user); 
- 	    		
- 	            if( email == undefined || email == null) {
- 					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
- 					naverLogin.reprompt();
- 					return;
- 				}
- 			} else {
- 				console.log("callback 처리에 실패하였습니다.");
- 			}
- 		});
- 	});
- 	var testPopUp;
- 	function openPopUp() {
- 	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
- 	}
- 	function closePopUp(){
- 	    testPopUp.close();
- 	}
- 	function naverLogout() {
- 		openPopUp();
- 		setTimeout(function() {
- 			closePopUp();
- 			}, 1000);
- 	}
-</script>	
 
 <script type="text/javascript">
 $(function() {
 	 
-    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
     var key = getCookie("key");
     console.log("아이디 : " + key);
     $("#emp_id").val(key); 

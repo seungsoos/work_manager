@@ -50,9 +50,8 @@
 							<input type="hidden" name="emp_pwd"
 								value="${employeeLogin.emp_pwd }">
 							<div class="mt-2 d-flex justify-content-end">
-								<input type="submit" class="btn btn-dark ms-2"
-									value="메인"> <input
-									class="btn btn-dark  ms-2" type="submit"
+								<input type="submit" class="btn btn-dark ms-2" value="메인">
+								<input class="btn btn-dark  ms-2" type="submit"
 									value="비밀번호 수정" onclick="updatePassword(this.form)">
 								<input class="btn btn-dark ms-2" type="submit"
 									value="개인정보수정" onclick="updateInformation(this.form)">

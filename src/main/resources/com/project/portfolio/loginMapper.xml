@@ -12,22 +12,22 @@
   		</selectKey>
   		
   		INSERT INTO employee
-  		VALUES
-  		(#{emp_number},#{emp_id},#{emp_pwd},#{emp_name},#{emp_rank},
-  		#{emp_birth},#{emp_gender}, #{emp_department},#{emp_rank_number})
+  			VALUES
+  			(#{emp_number},#{emp_id},#{emp_pwd},#{emp_name},#{emp_rank},
+  			#{emp_birth},#{emp_gender}, #{emp_department},#{emp_rank_number})
   	</insert>
   	
   	<select id="idSearch" resultType="String">
   		 SELECT emp_id FROM employee 
-  		 WHERE emp_number = #{emp_number} AND 
-  		 emp_department = #{emp_department} AND
-  		 emp_name = #{emp_name} AND 
-  		 emp_rank= #{emp_rank}
+  			WHERE emp_number = #{emp_number} AND 
+  		 		emp_department = #{emp_department} AND
+  		 		emp_name = #{emp_name} AND 
+  		 		emp_rank= #{emp_rank}
   	</select>
   	
   	<select id="pwdSearch" resultType="String">
   		 SELECT emp_pwd FROM employee 
-  		 WHERE emp_id = #{emp_id} AND
+  			 WHERE emp_id = #{emp_id} AND
   		  		 emp_number = #{emp_number} AND 
   		  		 emp_department = #{emp_department} AND
 		  		 emp_name = #{emp_name} AND 
@@ -35,11 +35,14 @@
   	</select>
   	
 	<update id="pwdChange">
-  	update employee set emp_pwd = #{emp_pwd} where emp_id = #{emp_id} 
+  		update employee 
+  			set emp_pwd = #{emp_pwd}
+  			where emp_id = #{emp_id} 
   	</update>
   	
   	<select id="idCheck" parameterType="String" resultType="int">
-  		SELECT COUNT(*) FROM employee WHERE emp_id = #{emp_id}
+  		SELECT COUNT(*) FROM employee
+  			WHERE emp_id = #{emp_id}
   	</select>
   	
   	<select id="login" resultType="login">

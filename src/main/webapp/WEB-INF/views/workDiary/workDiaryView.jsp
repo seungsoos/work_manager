@@ -59,7 +59,7 @@
 								value="${boardList.diary_date}" id="diary_date"
 								disabled="disabled">
 						</div>
-						<div id="view_div d-flex justify-content-end">
+						<div id="view_div d-flex flex-row-reverse">
 							<c:if
 								test="${boardEmp_id eq emp_id || employeeLogin.emp_id eq 'admin'}">
 								<div class="mb-3" id="session_div">
@@ -74,14 +74,12 @@
 								<input type="button" class="btn btn-dark" value="수정반영하기"
 									onclick="boardModifyResult(this.form)"> <input
 									type="button" class="btn btn-dark" value="취소"
-									onclick="backToList(this.form)"> <input
+									onclick="cancelModify(this.form)"> <input
 									type="hidden" name="boardList" value="${boardList.articleNo}">
 							</div>
 							<div>
 								<input type="button" class="btn btn-dark" value="목록"
-									onclick="backToList(this.form)"> <input
-									type="button" class="btn btn-dark" value="답글쓰기"
-									onclick="boardReply('${cPath}/workdiaryctr/workDiaryReply.do', ${boardList.articleNo},'${boardList.diary_title}')">
+									onclick="backToList(this.form)">
 							</div>
 						</div>
 					</form>
@@ -148,6 +146,13 @@
 		html_form.method = "post"; 
 		html_form.submit();
 	}
+		//수정하기 취소
+	function cancelModify(html_form) {
+		document.getElementById('diary_title').disabled = true;
+		document.getElementById('diary_content').disabled = true;
+		document.getElementById('modify_div').style.display = "none";
+		document.getElementById('session_div').style.display = "block";
+	}
 		
 		//삭제하기
 	function boardRemove(url, articleNo) {
@@ -165,30 +170,6 @@
 		form.submit();
 		
 		}
-		
-		//답글쓰기
-	function boardReply(url, parentNo, parentTitle) {
-			
-		var form = document.createElement("form");
-		
-		form.setAttribute('method','post');
-		form.setAttribute('action', url);
-		
-		var parentNOInput = document.createElement('input'); 
-		parentNOInput.setAttribute('type', 'hidden');
-		parentNOInput.setAttribute('name', 'parentNo');
-		parentNOInput.setAttribute('value', parentNo);
-		form.appendChild(parentNOInput);
-		
-		parentNOInput1 = document.createElement('input'); 
-		parentNOInput1.setAttribute('type', 'hidden');
-		parentNOInput1.setAttribute('name', 'parentTitle');
-		parentNOInput1.setAttribute('value', parentTitle);
-		
-		form.appendChild(parentNOInput1);
-		document.body.appendChild(form);
-		form.submit();
-	}
 		
 </script>
 </body>
