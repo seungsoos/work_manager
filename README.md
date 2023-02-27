@@ -43,6 +43,7 @@
   ![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/113499796/221570470-bf49fbbd-db2f-4892-9c22-73f79b76bd29.gif)
 
   * 결재자 -> 승인/반려 처리
+  * 승인처리시 DB 밒 캘린더 API 반영
 
   ![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/113499796/221571781-771ea6a5-6d1e-42d2-ae8b-8d123a43958b.gif)
 
