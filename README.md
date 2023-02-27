@@ -34,6 +34,8 @@
 
   * 주간 총 근무시간이 메인페이지에 자동 전시
 
+  ![image](https://user-images.githubusercontent.com/113499796/221569018-2153b5b5-691b-4c92-b25d-01fb462c8bc7.png)
+
 
 
 ### 주요데이터 흐름
