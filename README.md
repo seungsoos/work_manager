@@ -44,6 +44,8 @@
 
   * 결재자 -> 승인/반려 처리
 
+  ![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/113499796/221571781-771ea6a5-6d1e-42d2-ae8b-8d123a43958b.gif)
+
 
 
 ### 주요데이터 흐름
