@@ -11,7 +11,16 @@
       * 편집툴 : STS, HeidiSQL
 
 ### 프로젝트 구성
-
+  1.  패키지 구성
+  
+  ![패키지 구조](https://user-images.githubusercontent.com/113499796/221560150-70c19684-b5dd-45fe-a2f3-86c09e870486.png)
+  
+  
+  ![패키지 구조-2](https://user-images.githubusercontent.com/113499796/221560193-cca8c51c-e043-40a1-8b13-e4e6336a255b.png)
+  
+  2. View 구성
+  
+  ![jsp구조](https://user-images.githubusercontent.com/113499796/221560030-3ce77595-41fd-4b4c-8d0e-bdb6eeec5eb8.png)
 
 ### 프로그램 구현
 
