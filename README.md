@@ -60,5 +60,6 @@
   ![ezgif com-video-to-gif (6)](https://user-images.githubusercontent.com/113499796/221574491-744b262b-188b-4038-a474-7c8d265f0e03.gif)
 
 ### 주요데이터 흐름
+  1.  근태관리 구성()
 
 ### 데이터베이스 구조
