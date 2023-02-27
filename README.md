@@ -55,7 +55,10 @@
   
   ![image](https://user-images.githubusercontent.com/113499796/221573074-f7f2ab09-6967-4989-85c5-8eff484dd2d9.png)
   
-  6.  
+  6.  관리자 모드(사원관리)
+  
+  ![ezgif com-video-to-gif (6)](https://user-images.githubusercontent.com/113499796/221574491-744b262b-188b-4038-a474-7c8d265f0e03.gif)
+
 ### 주요데이터 흐름
 
 ### 데이터베이스 구조
