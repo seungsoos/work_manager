@@ -60,6 +60,27 @@
   ![ezgif com-video-to-gif (6)](https://user-images.githubusercontent.com/113499796/221574491-744b262b-188b-4038-a474-7c8d265f0e03.gif)
 
 ### 주요데이터 흐름
-  1.  근태관리 구성()
-
+  1.  근태관리 구성
+  
+  ![image](https://user-images.githubusercontent.com/113499796/221574671-cfe5029f-df10-4bc6-bbf6-5ff5eed63a65.png)
+  
+  ![image](https://user-images.githubusercontent.com/113499796/221574731-e9cee845-95e3-4e22-9792-69f058d2e663.png)
+  
+  *일일 주/야간 근무 버튼 클릭시 DateTime이 DB에 저장
+  *주간 총 근무시간(근무종료 - 근무시작)으로 산출
+  *개인별 주간 총 근무시간이 산출되어 메인페이지에 전시 
+  
+  2.  근무신청 구성
+  
+  ![image](https://user-images.githubusercontent.com/113499796/221574777-a3343304-9487-4e75-ad23-e1e6157a7f0a.png)
+  
+  ![image](https://user-images.githubusercontent.com/113499796/221574810-2b87ced9-794d-4a86-bb01-e4f374698fb6.png)
+  
+  *사원은 근무형태를 신청
+  *시작/종료 일자, 근무형태, 사유를 기입 후 결재자를 지정
+  *결재자는 승인/반려 처리, 승인시 캘린더 API에 반영
+  *팀별 근무신청 조회 가능
+  
 ### 데이터베이스 구조
+
+  ![image](https://user-images.githubusercontent.com/113499796/221574857-fce7c0af-ec43-43d1-b061-979a7d240c10.png)
