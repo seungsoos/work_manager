@@ -9,6 +9,9 @@ import com.project.portfolio.dto.CompanyTimeCheckDTO;
 
 public interface CompanyMainService {
 
+	//최초 bno구하기
+	int bnoCheck();
+	
 	//bno값 구하기
 	int newBno();
 	

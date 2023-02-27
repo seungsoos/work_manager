@@ -16,7 +16,6 @@ public class CompanyWorkDiaryDTO {
 	private String emp_department;
 	private int bno;
 	private int articleNo;
-	private int parentNo;
 	private String diary_title;
 	private String diary_content;
 	private Date diary_date;

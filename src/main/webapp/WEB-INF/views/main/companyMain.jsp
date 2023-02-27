@@ -25,7 +25,7 @@
 		<jsp:include page="../includes/sidebar.jsp"></jsp:include>
 		<div id="layoutSidenav_content">
 			<main>
-				<div class="container-fluid px-4">
+				<div class="container-fluid px-4 container">
 					<h1 class="mt-4">${todayMain}</h1>
 					<div class="row">
 						<div class="col-xl-3 col-md-6">

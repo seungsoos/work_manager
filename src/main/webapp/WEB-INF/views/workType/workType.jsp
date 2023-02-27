@@ -74,7 +74,7 @@ const work_approver = document.getElementById('work_approver')
 
 
 function approver(){
-	window.open("${cPath}/worktypectr/workTypeWindow.do", "_blank", "width=500, height=500");
+	window.open("${cPath}/worktypectr/workTypeWindow.do", "_blank", "width=350, height=400");
 }
 
 function workTypeApproverSave(obj) {
@@ -85,34 +85,6 @@ function workTypeApproverSave(obj) {
 	obj.method = "post";
 	obj.submit();
 	
-	/* if(work_date.value != null && work_date.value != ""){
-			
-			if(work_type.value != null && work_type.value != ""){
-			
-				if(work_content.value != null && work_content.value != ""){
-					
-					if(work_approver.value != null && work_approver.value != ""){
-						
-						
-					}else{
-						alert('결재자를 지정하세요.')
-						e.preventDefault();
-					}
-				
-				}else{
-					alert('근무사유를 입력하세요.')
-					e.preventDefault();
-				}
-				
-			}else{
-				alert('근무타입을 선택하세요.')
-			    e.preventDefault()
-			}
-			
-		}else{
-			alert('근무날짜를 선택하세요.')
-			e.preventDefault();
-		} */
 }
 
 </script>

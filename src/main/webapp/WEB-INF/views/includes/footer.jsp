@@ -13,11 +13,7 @@
 	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">Copyright &copy; Your Website 2022</div>
-				<div>
-					<a href="#">Privacy Policy</a> &middot; <a href="#">Terms &amp;
-						Conditions</a>
-				</div>
+				<div class="text-muted">정승수_개인프로젝트_근태관리프로그램</div>
 			</div>
 		</div>
 	</footer>

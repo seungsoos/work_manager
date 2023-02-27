@@ -40,11 +40,6 @@ public class CompanyWorkDiaryServiceImpl implements CompanyWorkDiaryService{
 	}
 
 	@Override
-	public void insertReply(CompanyWorkDiaryDTO dto) {
-		dao.insertReply(dto);
-	}
-
-	@Override
 	public int boardTotal(String emp_department) {
 		return dao.boardTotal(emp_department);
 	}

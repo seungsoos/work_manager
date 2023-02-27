@@ -13,27 +13,19 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
-	<style type="text/css">
-	a{
-		text-decoration: none;
-	}
-	.divstyle{
-	width: 200px;
-	height: 500px;
-	border: 1px solid black;
-	}
-	</style>
 </head>
 <body>
-	<div class="container text-center divStyle">
-		<h1 class="mt-4 ">결재자 지정</h1>
+	<div class="container text-center ">
+		<h1 class="mt-4">결재자 지정</h1>
 		<div class="d-flex justify-content-center">
 			<label for="id" class="form-label">이름</label>
 			<input type="text" class="form-contro emp_name ms-2" name="emp_name">
 			<input type="button" class="btn btn-dark approver ms-2"
 				value="검색">
 		</div>
-		<table class="table mt-4 text-center border" id="searchResult" style="display: none">
+		
+		<table class="table mt-4 table-bordered" id="searchResult" style="display: none">
+		  	<thead>
 				<tr>
 					<th scope="col">순번</th>
 					<th scope="col">팀</th>
@@ -41,6 +33,7 @@
 					<th scope="col">이름</th>
 					<th scope="col">비고</th>
 				</tr>
+			<thead>
 			<tbody class="searchResult">
 			</tbody>
 		</table>
@@ -74,14 +67,14 @@ $(function() {
 							console.log(result)
 							
 							document.getElementById('searchResult').style.display = "block";
-							
+							document.getElementById('searchResult').style = "margin-left:auto;, margin-right:auto;";
 							$.each(result, function(index, item) { 
-								$("#searchResult").empty();
-								$("#searchResult").append("<tr><th scope='row'>" + (index+1) + "</th>" +
+								$(".searchResult").empty();
+								$(".searchResult").append("<tr><th scope='row'>" + (index+1) + "</th>" +
 										"<td>" + item.emp_department + "</td>" +
 										"<td>" + item.emp_rank  + "</td>" +
 										"<td>" + item.emp_name  + "</td>" +
-										"<td><a id='searchA' onclick=select() data-value="+item.emp_department+"/"+item.emp_rank+"/"+item.emp_name+"/"+item.emp_id+">" + "선택" + "</a></td>" +
+										"<td><a class='link-primary' id='searchA' onclick=select() data-value="+item.emp_department+"/"+item.emp_rank+"/"+item.emp_name+"/"+item.emp_id+">" + "선택" + "</a></td>" +
 										"</tr>")
 							});
 							

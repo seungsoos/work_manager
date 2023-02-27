@@ -15,9 +15,15 @@ public interface CompanyWorkTypeService {
 	
 	//근태신청현황
 	public List<CompanyWorkTypeDTO> workTypeStatus(String emp_department,int displayPost, int postNum);
+	
+	//관리자 접속 근태신청현황
+	public List<CompanyWorkTypeDTO> workTypeStatusAdmin(int displayPost, int postNum);
 
 	// 게시물 총 갯수
 	public int count(String emp_department);
+	
+	//관리자 접속 게시물
+	public int countAdmin();
 	
 	//Main Page work_type 출력문
 	public List<CompanyWorkTypeDTO> work_typeList(String final_approver);

@@ -30,11 +30,22 @@ public class CompanyWorkTypeServiceImpl implements CompanyWorkTypeService{
 	public List<CompanyWorkTypeDTO> workTypeStatus(String emp_department, int displayPost, int postNum) {
 		return dao.workTypeStatus(emp_department, displayPost, postNum);
 	}
-
+	//관리자 접속 근태신청현황
+	@Override
+	public List<CompanyWorkTypeDTO> workTypeStatusAdmin(int displayPost, int postNum) {
+		return dao.workTypeStatusAdmin(displayPost, postNum);
+	}
+	
 	// 게시물 총 갯수
 	@Override
 	public int count(String emp_department) {
 		return dao.count(emp_department);
+	}
+	
+	//관리자 접속시 게시물 
+	@Override
+	public int countAdmin() {
+		return dao.countAdmin();
 	}
 	
 	//Main Page work_type 출력문
@@ -60,6 +71,10 @@ public class CompanyWorkTypeServiceImpl implements CompanyWorkTypeService{
 	public int leaveWork() {
 		return dao.leaveWork();
 	}
+
+	
+
+
 
 
 }

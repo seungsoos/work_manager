@@ -39,9 +39,9 @@
 	<div id="layoutSidenav">
 		<jsp:include page="../includes/sidebar.jsp"></jsp:include>
 		<div id="layoutSidenav_content">
-			<main>
+			<main >
 
-				<div id='calendar'></div>
+				<div id='calendar'class="container"></div>
 				<div class="d-flex justify-content-end btndiv">
 				<form action="${cPath}/mainctr/main.do" method="get">
 					<input type="submit" class="btn btn-dark right"

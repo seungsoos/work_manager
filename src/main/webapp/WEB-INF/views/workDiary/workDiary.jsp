@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>업무일지 페이지</title>
+<title>근무일지 페이지</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -23,7 +23,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container">
-					<h3 class="mt-4">업무일지 확인</h3>
+					<h3 class="mt-4">근무일지 확인</h3>
 					<table class="table">
 						<tr>
 							<td colspan="5">

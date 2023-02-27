@@ -82,7 +82,7 @@
 				<ul class="mt-2">
 					<li><a href="${cPath }/loginctr/idSearch.do" class="color-black li-a idSearch">아이디 찾기</a></li>
 					<li><a href="${cPath }/loginctr/pwSearch.do" class="color-black li-a pwSearch">비밀번호 찾기</a></li>
-					<li><a href="${cPath }/loginctr/agree.do" class="color-black li-a">회원가입</a></li>
+					<li><a href="${cPath }/loginctr/agree.do" class="color-black li-a">사원등록</a></li>
 				</ul>
 			</div>
 			<br>

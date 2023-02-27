@@ -91,7 +91,6 @@ public class CompanyWorkDiaryController {
 		
 		dto.setEmp_id((String)session.getAttribute("emp_id"));
 		dto.setArticleNo(service.articleNoMax());
-		dto.setParentNo(1);
 		dto.setDiary_title(request.getParameter("diary_title"));
 		dto.setDiary_content(request.getParameter("diary_content"));
 		
@@ -140,47 +139,6 @@ public class CompanyWorkDiaryController {
 		dto.setDiary_content(diary_content);
 		
 		service.updateBoard(dto);
-		
-		
-		return "forward:/workdiaryctr/workDiary.do?num=1";
-	}
-	
-	@PostMapping(value = "/workDiaryReply.do")
-	public String workDiaryReply(HttpServletRequest request, Model model) {
-		log.info("---답글 달기---");
-		String parentNo = request.getParameter("parentNo");
-		String parentTitle = request.getParameter("parentTitle");
-		System.out.println(parentNo);
-		System.out.println(parentTitle);
-		
-		model.addAttribute("parentNo",parentNo);
-		model.addAttribute("parentTitle",parentTitle);
-		
-		return "workDiary/workDiaryReply";
-	}
-	
-	@PostMapping(value = "/workDiaryReplyResult.do")
-	public String workDiaryReplyResult(HttpServletRequest request, Model model) {
-		log.info("---답글달기 완료 ---");
-		HttpSession session =request.getSession();
-		
-		int parentNo = Integer.parseInt(request.getParameter("parentNo"));
-		String diary_title = request.getParameter("diary_title");
-		String diary_content = request.getParameter("diary_content");
-		String emp_id = (String)session.getAttribute("emp_id");
-		
-		System.out.println(parentNo);
-		System.out.println(diary_title);
-		System.out.println(diary_content);
-		System.out.println(emp_id);
-		
-		dto.setEmp_id(emp_id);
-		dto.setArticleNo(service.articleNoMax());
-		dto.setParentNo(2);
-		dto.setDiary_title(diary_title);
-		dto.setDiary_content(diary_content);
-		
-		service.insertReply(dto);
 		
 		
 		return "forward:/workdiaryctr/workDiary.do?num=1";

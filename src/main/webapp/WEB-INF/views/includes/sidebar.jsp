@@ -24,11 +24,11 @@
 							</div> 사원관리
 						</a>
 					</c:if>
-					<div class="sb-sidenav-menu-heading">업무</div>
+					<div class="sb-sidenav-menu-heading">근무</div>
 					<a class="nav-link" href="${cPath}/mainctr/workDiary.do?num=1">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-columns"></i>
-						</div> 업무일지
+						</div> 근무일지
 					</a>
 					<div class="sb-sidenav-menu-heading">근태</div>
 					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

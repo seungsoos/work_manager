@@ -21,9 +21,6 @@ public interface CompanyWorkDiaryService {
     // 게시물 보기
     public CompanyWorkDiaryDTO selectBoardByArticleNo(int articleNo);
 
-    // 댓글 달기
-    public void insertReply(CompanyWorkDiaryDTO dto);
-    
     //게시물 총 개수 확인
     public int boardTotal(String emp_department);
     

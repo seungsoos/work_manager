@@ -153,9 +153,16 @@ public class CompanyMainController {
 		workTypeMap.put("goToWork", goToWork);
 		workTypeMap.put("leaveWork", leaveWork);
 		workTypeMap.put("nightShift", nightShift);
-		
-		
-		
+		System.out.println("-----------------------------------------");
+		System.out.println(totalEmployee);
+		System.out.println(out_work);
+		System.out.println(business_work);
+		System.out.println(vacation);
+		System.out.println(home_work);
+		System.out.println(goToWork);
+		System.out.println(leaveWork);
+		System.out.println(nightShift);
+		System.out.println("-----------------------------------------");
 		//------------------상단 근무 타입 출력------------------
 		session.setAttribute("workTypeMap", workTypeMap);
 		
@@ -209,8 +216,12 @@ public class CompanyMainController {
 		System.out.println(emp_id);
 		System.out.println(emp_name);
 		
-		int newBno = service.newBno();
-		System.out.println("bno +1 값 : " + newBno);
+		int newBno;
+		if(service.bnoCheck() == 0) {
+			newBno = 1;
+		}else {
+			newBno = service.newBno();
+		}
 		
 		int result = service.startTime(emp_id, emp_name, newBno);
 		System.out.println(result);

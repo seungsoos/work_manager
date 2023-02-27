@@ -47,7 +47,7 @@
 	<insert id="insertBoard">
 		INSERT INTO work_diary 
 			(emp_id, emp_rank, emp_name,
-			 emp_department, articleNo, parentNo,
+			 emp_department, articleNo,
 			 diary_title, diary_content)
 		VALUES
 			(#{emp_id}, 
@@ -60,7 +60,7 @@
 						(SELECT emp_department 
 						FROM employee
 						WHERE emp_id = #{emp_id}),
-						 	#{articleNo}, #{parentNo},
+						 	#{articleNo},
 						 	#{diary_title},#{diary_content})
 	</insert>
 	
@@ -83,24 +83,5 @@
 			WHERE
 				articleNo = #{articleNo}
 	</update>
-	
-	<insert id="insertReply">
-		INSERT INTO work_diary 
-			(emp_id, emp_rank, emp_name,
-			 articleNo, parentNo,
-			 diary_title, diary_content)
-		VALUES
-			(#{emp_id}, 
-				(SELECT emp_rank  
-				 FROM employee
-				 WHERE emp_id = #{emp_id}), 
-					(SELECT emp_name 
-					 FROM employee
-					 WHERE emp_id = #{emp_id}),
-					 	#{articleNo}, #{parentNo},
-					 	#{diary_title},#{diary_content})
-	</insert>
-	
-	
 	
 </mapper>

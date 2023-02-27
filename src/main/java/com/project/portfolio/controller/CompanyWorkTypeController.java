@@ -113,27 +113,38 @@ public class CompanyWorkTypeController {
 		String emp_department = employeeLogin.getEmp_department();
 		System.out.println(emp_department);
 		
+		int count;
+		if(emp_department.equals("관리자")) {
+			count = service.countAdmin();
+		}else {
+			count = service.count(emp_department);
+		}
 		
-		
-		 int count = service.count(emp_department);
-		 int postNum = 10;
-		 int pageNum = (int)Math.ceil((double)count/postNum);
-		 int displayPost = (num - 1) * postNum;
+		   
+		int postNum = 10;
+		int pageNum = (int)Math.ceil((double)count/postNum);
+		int displayPost = (num - 1) * postNum;
 
-		 int pageNum_cnt = 10;
-		 int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt);
-		 int startPageNum = endPageNum - (pageNum_cnt - 1);
+		int pageNum_cnt = 10;
+		int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt);
+		int startPageNum = endPageNum - (pageNum_cnt - 1);
 
-		 int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNum_cnt));
+		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNum_cnt));
 		 
-		 if(endPageNum > endPageNum_tmp) {
-		  endPageNum = endPageNum_tmp;
-		 }
+		if(endPageNum > endPageNum_tmp) {
+			endPageNum = endPageNum_tmp;
+		}
 		 
 		 boolean prev = startPageNum == 1 ? false : true;
 		 boolean next = endPageNum * pageNum_cnt >= count ? false : true;
-		 List<CompanyWorkTypeDTO> workTypeList = service.workTypeStatus(emp_department,displayPost, postNum);
-		
+		 List<CompanyWorkTypeDTO> workTypeList;
+			if(emp_department.equals("관리자")) {
+				workTypeList = service.workTypeStatusAdmin(displayPost, postNum);
+			}else {
+				 workTypeList = service.workTypeStatus(emp_department,displayPost, postNum);
+			}
+		 
+		System.out.println(workTypeList);
 		model.addAttribute("startPageNum", startPageNum);
 		model.addAttribute("endPageNum", endPageNum);
 		model.addAttribute("prev", prev);

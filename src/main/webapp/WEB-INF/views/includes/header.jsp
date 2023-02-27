@@ -22,7 +22,7 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item"><span class="nav-link active">총사원 :
-						${workTypeMap.totalEmployee-1}명</span></li>
+						${workTypeMap.totalEmployee}명</span></li>
 				<li class="nav-item"><span class="nav-link active">출근 :
 						${workTypeMap.goToWork}명</span></li>
 				<li class="nav-item"><span class="nav-link active">야근 :

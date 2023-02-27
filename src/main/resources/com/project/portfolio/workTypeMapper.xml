@@ -28,9 +28,20 @@
   		limit #{displayPost}, #{postNum}
   </select>
   
+   <select id="workTypeStatusAdmin" resultType="workType">
+  	select * 
+  		from work_type
+  		order by work_date_start desc
+  		limit #{displayPost}, #{postNum}
+  </select>
+  
   <select id="count" resultType="int">
   	select count(*) from work_type
   	where emp_department = #{emp_department}
+  </select>
+  
+  <select id="countAdmin" resultType="int">
+  	select count(*) from work_type
   </select>
   
   <select id="work_typeList" resultType="workType">

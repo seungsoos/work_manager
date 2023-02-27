@@ -15,6 +15,12 @@ public class CompanyMainServiceImpl implements CompanyMainService{
 	@Autowired
 	private CompanyMainDAO dao;
 	
+	
+	@Override
+	public int bnoCheck() {
+		return dao.bnoCheck();
+	}
+	
 	@Override
 	public int newBno() {
 		return dao.newBno();
@@ -86,6 +92,8 @@ public class CompanyMainServiceImpl implements CompanyMainService{
 	public String total_night_of_week(String emp_id) {
 		return dao.total_night_of_week(emp_id);
 	}
+
+	
 	
 
 
