@@ -29,6 +29,10 @@
 
 
   2.  근태관리(gif)  
+  
+  ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/113499796/221568380-6ebf3433-c4b2-4f77-8f60-81e78b740aa4.gif)
+
+  3.  
 
 ### 주요데이터 흐름
 
