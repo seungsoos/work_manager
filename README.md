@@ -23,12 +23,12 @@
   ![jsp구조](https://user-images.githubusercontent.com/113499796/221560030-3ce77595-41fd-4b4c-8d0e-bdb6eeec5eb8.png)
 
 ### 프로그램 구현
-  1.  로그인페이지
+  1.  로그인페이지(gif)
   
   ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/113499796/221567246-71a11e8f-6998-4e51-a874-8820e2546fe2.gif)
 
 
-  2.  
+  2.  근태관리(gif)  
 
 ### 주요데이터 흐름
 
