@@ -22,7 +22,7 @@
   
   ![jsp구조](https://user-images.githubusercontent.com/113499796/221560030-3ce77595-41fd-4b4c-8d0e-bdb6eeec5eb8.png)
 
-🎯 ### 프로그램 구현
+ ### 🎯프로그램 구현
   1.  로그인페이지(gif)
   
   ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/113499796/221567246-71a11e8f-6998-4e51-a874-8820e2546fe2.gif)
@@ -59,7 +59,7 @@
   
   ![ezgif com-video-to-gif (6)](https://user-images.githubusercontent.com/113499796/221574491-744b262b-188b-4038-a474-7c8d265f0e03.gif)
 
-🔖 ### 주요데이터 흐름
+ ### 🔖주요데이터 흐름
   1.  근태관리 구성
   
   ![image](https://user-images.githubusercontent.com/113499796/221574671-cfe5029f-df10-4bc6-bbf6-5ff5eed63a65.png)
@@ -81,7 +81,7 @@
   * 결재자는 승인/반려 처리, 승인시 캘린더 API에 반영
   * 팀별 근무신청 조회 가능
   
-💾 ### 데이터베이스 구조
+ ### 💾데이터베이스 구조
 
  ![image](https://user-images.githubusercontent.com/113499796/221574857-fce7c0af-ec43-43d1-b061-979a7d240c10.png)
   
