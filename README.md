@@ -87,5 +87,5 @@
  
  ### 실행방법
  
- [클릭](https://github.com/seungsoos/work_manager/edit/seungsoo/HowtoBuild.md)
+ [클릭](https://github.com/seungsoos/work_manager/edit/seungsoo/Howtobuild.md)
  
