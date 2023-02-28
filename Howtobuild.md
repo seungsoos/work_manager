@@ -1,6 +1,6 @@
 ## Usage
 
- ### root-context.xml
+ ### 🛠root-context.xml
  ```java
  <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
