@@ -10,6 +10,11 @@
       * DB : Maria DB
       * 편집툴 : STS, HeidiSQL
 
+ ### 🙋‍♂️실행방법
+ 
+ [클릭](https://github.com/seungsoos/work_manager/edit/seungsoo/Howtobuild.md)
+ 
+
 ### 🥁프로젝트 구성
   1.  패키지 구성
   
@@ -85,7 +90,5 @@
 
  ![image](https://user-images.githubusercontent.com/113499796/221574857-fce7c0af-ec43-43d1-b061-979a7d240c10.png)
  
- ### 🙋‍♂️실행방법
- 
- [클릭](https://github.com/seungsoos/work_manager/edit/seungsoo/Howtobuild.md)
+
  
