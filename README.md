@@ -12,7 +12,7 @@
 
  ### 🙋‍♂️실행방법
  
- [클릭](https://github.com/seungsoos/work_manager/edit/seungsoo/Howtobuild.md)
+ [클릭]([https://github.com/seungsoos/work_manager/edit/seungsoo/Howtobuild.md](https://github.com/seungsoos/work_manager/blob/seungsoo/Howtobuild.md))
  
 
 ### 🥁프로젝트 구성
