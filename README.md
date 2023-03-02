@@ -10,7 +10,7 @@
       * DB : Maria DB
       * 편집툴 : STS, HeidiSQL
 
- ### 🙋‍♂️세부설명
+ ### 🙋‍♂️Git Repository
  
  [클릭](https://seungsoos.github.io/WorkManager/)
- 
+
