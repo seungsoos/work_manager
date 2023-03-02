@@ -12,5 +12,5 @@
 
  ### 🙋‍♂️세부설명
  
- [클릭](https://github.com/seungsoos/work_manager/blob/seungsoo/Howtobuild.md)
+ [클릭](https://seungsoos.github.io/WorkManager/)
  
