@@ -33,17 +33,17 @@ public class CompanyTimeCheckController{
 							Model model) {
 		log.info("---TimeCheck 근무시간 확인---");
 		
-		System.out.println("num 값 : " + num);
+		log.info("num 값 : " + num);
 		
 		String emp_id = request.getParameter("emp_id");
 		String emp_name = request.getParameter("emp_name");
 		
-		System.out.println(emp_id);
-		System.out.println(emp_name);
+		log.info(emp_id);
+		log.info(emp_name);
 		
 		
 		int count = service.count(emp_id);
-		System.out.println("토탈 : " + count);
+		log.info("토탈 : " + count);
 		
 		int postNum = 10;
 		int pageNum = (int)Math.ceil((double)count/postNum);
@@ -88,12 +88,12 @@ public class CompanyTimeCheckController{
 		String emp_name = request.getParameter("emp_name");
 		String select = request.getParameter("select");
 		
-		System.out.println("아이디 : " +  emp_id);
-		System.out.println("이름 : " +  emp_name);
-		System.out.println("월 : " +  select);
+		log.info("아이디 : " +  emp_id);
+		log.info("이름 : " +  emp_name);
+		log.info("월 : " +  select);
 		
 		int count = service.countMonth(emp_id, select);
-		System.out.println("토탈 : " + count);
+		log.info("토탈 : " + count);
 		
 		int postNum = 10;
 		int pageNum = (int)Math.ceil((double)count/postNum);
@@ -115,7 +115,8 @@ public class CompanyTimeCheckController{
 		
 		
 		List<CompanyTimeCheckDTO> list = service.timeSelectCheck(select, emp_id,displayPost, postNum);
-		System.out.println(list);
+		log.info(list);
+		
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageNum", pageNum);

@@ -93,6 +93,12 @@ public class CompanyMainServiceImpl implements CompanyMainService{
 		return dao.total_night_of_week(emp_id);
 	}
 
+	//계정삭제
+	@Override
+	public void delete(String emp_id) {
+		dao.delete(emp_id);
+	}
+
 	
 	
 

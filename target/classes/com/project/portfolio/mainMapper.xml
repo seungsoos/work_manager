@@ -174,4 +174,9 @@
   		select * from employee
   			where emp_id = #{emp_id}
   	</select>
+  	
+  	<delete id="delete">
+  		delete from employee
+  			where emp_id = #{emp_id}
+  	</delete>
   </mapper>

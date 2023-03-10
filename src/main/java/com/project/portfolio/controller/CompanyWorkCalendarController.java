@@ -31,7 +31,7 @@ public class CompanyWorkCalendarController {
 		HttpSession session = request.getSession();
 		CompanyLoginDTO employeeLogin = (CompanyLoginDTO)session.getAttribute("employeeLogin");
 		String calendar_emp_department = employeeLogin.getEmp_department();
-		System.out.println(calendar_emp_department);
+		log.info(calendar_emp_department);
 		List<CompanyWorkCalendarDTO> calendar;
 		
 		if(calendar_emp_department.equals("관리자")) {

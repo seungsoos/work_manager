@@ -34,7 +34,7 @@ public class CompanyWorkTypeApproverController {
 		
 		HttpSession session =request.getSession();	
 		String emp_id = (String) session.getAttribute("emp_id");
-		System.out.println(emp_id);
+		log.info(emp_id);
 		String app_status = "결재대기";
 		
 		List<CompanyWorkTypeDTO> workTypeList = service.listPage(emp_id, app_status);
@@ -53,12 +53,12 @@ public class CompanyWorkTypeApproverController {
 		
 		service.approverAllow(emp_id, app_status);
 		
-		System.out.println("결재대상자 아이디값 확인 : " + emp_id);
-		System.out.println("결재대상자 bno값 확인 : " + bno);
+		log.info("결재대상자 아이디값 확인 : " + emp_id);
+		log.info("결재대상자 bno값 확인 : " + bno);
 		
 		calendarService.workTypeCalendarInsert(emp_id, bno);
 		
-		System.out.println("---캘린더 추가 성공---");
+		log.info("---캘린더 추가 성공---");
 		
 		return "forward:/worktypeapproverctr/approver.do";
 	}
@@ -67,7 +67,7 @@ public class CompanyWorkTypeApproverController {
 	public String approverDisallow(HttpServletRequest request) {
 		log.info("---근태 신청 반려---");
 		String emp_id = request.getParameter("emp_id");
-		System.out.println(emp_id);
+		log.info(emp_id);
 		
 		String app_status = "결재반려";
 		

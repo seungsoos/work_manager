@@ -86,7 +86,7 @@ public class CompanyAdminController {
 	public String timeCheckAdmin(HttpServletRequest request,Model model) {
 		log.info("---근무시간관리---");
 		String emp_id = request.getParameter("emp_id");
-		System.out.println("아이디 : " + emp_id);
+		log.info("아이디 : " + emp_id);
 		
 		model.addAttribute("emp_id", emp_id);
 		return "admin/CompanyTimeCheckAdmin";
@@ -99,12 +99,12 @@ public class CompanyAdminController {
 		
 		String select =  request.getParameter("select");
 		String emp_id =  request.getParameter("emp_id");
-		System.out.println("num값 확인 : " +  num);
-		System.out.println(select);
-		System.out.println(emp_id);
+		log.info("num값 확인 : " +  num);
+		log.info(select);
+		log.info(emp_id);
 		
 		int count = service.countMonth(emp_id, select);
-		System.out.println(count);
+		log.info(count);
 		int postNum = 10;
 		int pageNum = (int) Math.ceil((double) count / postNum);
 		int displayPost = (num - 1) * postNum;
@@ -120,7 +120,7 @@ public class CompanyAdminController {
 		boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 
 		List<CompanyTimeCheckDTO> list = service.adminEmployeeMonth(emp_id, select, displayPost, postNum);
-		System.out.println(list);
+		log.info(list);
 		
 		
 		model.addAttribute("startPageNum", startPageNum);
@@ -141,12 +141,12 @@ public class CompanyAdminController {
 		log.info("---근무시간수정---");
 		String emp_id = request.getParameter("emp_id");
 		String work_date = request.getParameter("work_date");
-		System.out.println(emp_id);
-		System.out.println(work_date);
+		log.info(emp_id);
+		log.info(work_date);
 		
 		CompanyTimeCheckDTO timeList = service.adminTimeUpdate(emp_id, work_date);
 		
-		System.out.println(timeList);
+		log.info(timeList);
 		
 		model.addAttribute("timeList", timeList);
 		

@@ -35,7 +35,7 @@ public class CompanyWorkDiaryController {
 	public String workDiary(HttpServletRequest request,
 							@RequestParam("num") int num, Model model) {
 		log.info("---업무공유 페이지---");
-		System.out.println("num 값 : " + num);
+		log.info("num 값 : " + num);
 		HttpSession session = request.getSession();
 		CompanyLoginDTO dto = (CompanyLoginDTO) session.getAttribute("employeeLogin");
 		String emp_department = dto.getEmp_department();
@@ -106,7 +106,7 @@ public class CompanyWorkDiaryController {
 		
 		
 		CompanyWorkDiaryDTO boardList = service.selectBoardByArticleNo(articleNo);
-		System.out.println("boardList : " + boardList);
+		log.info("boardList : " + boardList);
 		
 		HttpSession session =request.getSession();	
 		

@@ -53,4 +53,7 @@ public interface CompanyMainService {
 
 	//야간 토탈근무 시간가져오기
 	String total_night_of_week(@Param("emp_id") String emp_id);
+	
+	//계정삭제
+	void delete(String emp_id);
 }

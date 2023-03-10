@@ -116,7 +116,7 @@ public class CompanyLoginController {
 		String emp_name = request.getParameter("emp_name");
 		String emp_rank = request.getParameter("emp_rank");
 		String emp_id = service.idSearch(emp_number, emp_department, emp_name, emp_rank);
-		System.out.println("id찾은값 : " + emp_id);
+		log.info("id찾은값 : " + emp_id);
 		model.addAttribute("emp_id", emp_id);
 		
 		return "login/companyIdResult";
@@ -151,9 +151,9 @@ public class CompanyLoginController {
 	public String companyPwChange(HttpServletRequest request, Model model) {
 		log.info("---비밀번호 수정 페이지---");
 		String emp_id = request.getParameter("emp_id");
-		System.out.println("아이디 :" + emp_id);
+		log.info("아이디 :" + emp_id);
 		String emp_pwd = request.getParameter("emp_pwd");
-		System.out.println("비밀번호 : " + emp_pwd);
+		log.info("비밀번호 : " + emp_pwd);
 		
 		
 		model.addAttribute("emp_id", emp_id);
@@ -166,9 +166,9 @@ public class CompanyLoginController {
 	public String companyPwChangeResult(Model model, HttpServletRequest request) {
 		log.info("---비밀번호 수정 후 로그인페이지 이동---");
 		String emp_id = request.getParameter("emp_id");
-		System.out.println("아이디 :" + emp_id);
+		log.info("아이디 :" + emp_id);
 		String emp_pwd = request.getParameter("emp_pwd");
-		System.out.println("비밀번호: " + emp_pwd);
+		log.info("비밀번호: " + emp_pwd);
 		
 		service.pwdChange(emp_id, emp_pwd);
 		
@@ -183,7 +183,7 @@ public class CompanyLoginController {
 		
 		int idValue =service.idCheck(emp_id);
 		
-		System.out.println("리턴값확인 : " + idValue);
+		log.info("리턴값확인 : " + idValue);
 		
 		return idValue;
 	}
@@ -196,13 +196,13 @@ public class CompanyLoginController {
 		
 		dto = service.login(emp_id, emp_pwd);
 		log.info("---로그인 성공---");
-		System.out.println(dto);
+		log.info(dto);
 		if(dto != null) {
 			HttpSession session =request.getSession();		
 			session.setAttribute("employeeLogin", dto);
 			session.setAttribute("emp_id", dto.getEmp_id());
 			session.setMaxInactiveInterval(3600);
-			System.out.println("로그인완료~~~");
+			log.info("로그인완료~~~");
 			
 			return "redirect:/mainctr/main.do";
 			

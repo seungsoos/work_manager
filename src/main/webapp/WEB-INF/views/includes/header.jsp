@@ -53,6 +53,7 @@
 						</c:when>
 						<c:otherwise>
 							<li><a class="dropdown-item" href="${cPath}/mainctr/updateInformation.do">개인정보수정</a></li>
+							<li><a class="dropdown-item" href="${cPath}/mainctr/delete.do">계정삭제</a></li>
 							<li><a class="dropdown-item" href="${cPath}/mainctr/logout.do">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>

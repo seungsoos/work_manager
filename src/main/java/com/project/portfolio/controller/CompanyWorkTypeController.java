@@ -55,12 +55,12 @@ public class CompanyWorkTypeController {
 													Model model) {
 		log.info("---결재자 지정---");
 		String emp_name = hashMap.get("emp_name");
-		System.out.println(emp_name);
+		log.info(emp_name);
 		
 		List<CompanyLoginDTO> result = service.approverSearch(emp_name);
 		model.addAttribute("result",result);
 		
-		System.out.println(result);
+		log.info(result);
 		
 		return result;
 	}
@@ -97,7 +97,7 @@ public class CompanyWorkTypeController {
 		dto.setApprover_emp_id(approver_emp_id);
 		
 		service.approverRequest(dto);
-		System.out.println("---근태신청완료---");
+		log.info("---근태신청완료---");
 		return "forward:/worktypectr/workTypeStatus.do?num=1";
 	}
 	//----------------------------근태신청현황----------------------------
@@ -111,7 +111,7 @@ public class CompanyWorkTypeController {
 		HttpSession session = request.getSession();
 		CompanyLoginDTO employeeLogin = (CompanyLoginDTO)session.getAttribute("employeeLogin");
 		String emp_department = employeeLogin.getEmp_department();
-		System.out.println(emp_department);
+		log.info(emp_department);
 		
 		int count;
 		if(emp_department.equals("관리자")) {
@@ -144,7 +144,7 @@ public class CompanyWorkTypeController {
 				 workTypeList = service.workTypeStatus(emp_department,displayPost, postNum);
 			}
 		 
-		System.out.println(workTypeList);
+		log.info(workTypeList);
 		model.addAttribute("startPageNum", startPageNum);
 		model.addAttribute("endPageNum", endPageNum);
 		model.addAttribute("prev", prev);

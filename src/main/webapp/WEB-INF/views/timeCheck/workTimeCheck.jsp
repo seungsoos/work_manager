@@ -45,8 +45,9 @@
 					<option value="2023-12%"<c:if test="${select eq '2023-12%'}">selected=selected</c:if>>12월</option>
 				</select>
 				<input type="submit" class="btn btn-dark ms-2" value="선택">
-				<input type="hidden" name="emp_id" value="${list[0].emp_id}">
-				<input type="hidden" name="emp_name" value="${list[0].emp_name}">
+				
+				<input type="hidden" name="emp_id" value="${emp_id}">
+				<input type="hidden" name="emp_name" value="${emp_name}">
 				<input type="hidden" name="num" value="1">
 			</form>
 			<table class="table">

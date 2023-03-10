@@ -52,12 +52,12 @@ public class CompanyMainController {
 		String nowTime1 = sdf1.format(now.getTime());
 	    String select = nowTime1.substring(0,7);
 	    select += "%";
-	    System.out.println(select);
+	    log.info(select);
 	    //------------------주간 근무시간 출력------------------
 	    
 	    //------------------세션 작업------------------
 	    HttpSession session =request.getSession();	
-	    System.out.println("세션시간 : " + session.getMaxInactiveInterval());
+	    log.info("세션시간 : " + session.getMaxInactiveInterval());
 		String emp_id = (String) session.getAttribute("emp_id");
 		//------------------세션 작업------------------
 		//------------------메인페이지 전시 요일별 작업------------------
@@ -126,7 +126,7 @@ public class CompanyMainController {
 		int vacation = 0;
 		
 		for(CompanyWorkTypeDTO list : workTypeList) {
-			System.out.println(list.getWork_type());
+			log.info(list.getWork_type());
 			switch (list.getWork_type()) {
 			case "외근" : out_work++;
 				break;
@@ -153,16 +153,6 @@ public class CompanyMainController {
 		workTypeMap.put("goToWork", goToWork);
 		workTypeMap.put("leaveWork", leaveWork);
 		workTypeMap.put("nightShift", nightShift);
-		System.out.println("-----------------------------------------");
-		System.out.println(totalEmployee);
-		System.out.println(out_work);
-		System.out.println(business_work);
-		System.out.println(vacation);
-		System.out.println(home_work);
-		System.out.println(goToWork);
-		System.out.println(leaveWork);
-		System.out.println(nightShift);
-		System.out.println("-----------------------------------------");
 		//------------------상단 근무 타입 출력------------------
 		session.setAttribute("workTypeMap", workTypeMap);
 		
@@ -213,8 +203,8 @@ public class CompanyMainController {
 		String emp_id = hashMap.get("emp_id");
 		String emp_name = hashMap.get("emp_name");
 
-		System.out.println(emp_id);
-		System.out.println(emp_name);
+		log.info(emp_id);
+		log.info(emp_name);
 		
 		int newBno;
 		if(service.bnoCheck() == 0) {
@@ -224,7 +214,7 @@ public class CompanyMainController {
 		}
 		
 		int result = service.startTime(emp_id, emp_name, newBno);
-		System.out.println(result);
+		log.info(result);
 		
 		return result;
 	}
@@ -240,8 +230,8 @@ public class CompanyMainController {
 		int result = service.endTime(emp_id, emp_name);
 		int total = service.total_time(emp_id, emp_name);
 		
-		System.out.println("근무종료 : " + result);
-		System.out.println("토탈 : " + total);
+		log.info("근무종료 : " + result);
+		log.info("토탈 : " + total);
 		
 		return result;
 	}
@@ -253,10 +243,10 @@ public class CompanyMainController {
 		
 		String emp_id = hashMap.get("emp_id");
 		String emp_name = hashMap.get("emp_name");
-		System.out.println(emp_id + emp_name);
+		log.info(emp_id + emp_name);
 		
 		int result = service.night_start_time(emp_id, emp_name);
-		System.out.println(result);
+		log.info(result);
 		
 		return result;
 	}
@@ -272,8 +262,8 @@ public class CompanyMainController {
 		int result = service.night_end_time(emp_id, emp_name);
 		int total = service.night_total_time(emp_id, emp_name);
 		
-		System.out.println("야간근무종료 : " +result);
-		System.out.println("토탈 : " + total);
+		log.info("야간근무종료 : " +result);
+		log.info("토탈 : " + total);
 		
 		return result;
 	}
@@ -299,5 +289,17 @@ public class CompanyMainController {
 		session.invalidate();
 		
 		return "login/companyLogin";
+	}
+	
+	@GetMapping(value = "delete.do")
+	public String delete(HttpServletRequest request) {
+		log.info("---계정삭제---");
+		 HttpSession session =request.getSession();	
+		 String emp_id = (String) session.getAttribute("emp_id");
+		 log.info(emp_id);
+		 
+		 service.delete(emp_id);
+		 
+		 return "login/companyLogin";
 	}
 }
